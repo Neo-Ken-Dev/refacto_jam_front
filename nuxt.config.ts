@@ -32,7 +32,6 @@ export default defineNuxtConfig({
         login: '/connexion'
       },
     },
-    globalAppMiddleware: true
   },
   vuetify: {
     /* vuetify options */

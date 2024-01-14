@@ -28,7 +28,7 @@
       ></v-text-field>
     </v-col>
     <v-btn icon :to="{ name: 'cart' }">
-      <v-badge color="red" floating>
+      <v-badge color="red" floating content="2">
         <v-icon>mdi-cart</v-icon>
       </v-badge>
     </v-btn>

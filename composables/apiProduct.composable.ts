@@ -7,5 +7,10 @@ export const useApiProduct = () => ({
         reject(error)
       })
     })
+  },
+
+  search(params): Promise<any> {
+    const query = new URLSearchParams(params).toString();
+    return useAxios().get(`api/products?${query}`);
   }
 })

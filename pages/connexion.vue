@@ -2,13 +2,13 @@
   <v-container class="my-5">
     <v-row justify="center">
       <v-col cols="12" md="6">
-        <div v-if="error.value" class="error-message">{{ error.value.message }}</div>
+        <div v-if="error" class="error-message">{{ error }}</div>
 
         <h1 class="my-5">Login</h1>
         <v-form @submit.prevent="connect">
           <!-- Email input -->
           <v-text-field
-            label="Email address"
+            label="Adresse Email"
             id="username"
             name="_username"
             variant="outlined"
@@ -17,7 +17,7 @@
 
           <!-- Password input -->
           <v-text-field
-            label="Password"
+            label="Mot de passe"
             id="password"
             name="_password"
             type="password"
@@ -26,11 +26,11 @@
           ></v-text-field>
 
           <!-- Submit button -->
-          <v-btn type="submit" color="primary">Sign in</v-btn>
+          <v-btn type="submit" color="primary" @click="goToHome">Se connecter</v-btn>
 
           <!-- Register buttons -->
           <div class="text-center">
-            <p>Not a member? <NuxtLink to="/register">Register</NuxtLink></p>
+            <p>Pas de compte ? <NuxtLink to="/register">S'enregistrer</NuxtLink></p>
           </div>
         </v-form>
       </v-col>
@@ -61,10 +61,14 @@ const connect = async () => {
   }
 
   try {
-    await signIn(credentials, { callbackUrl: '/home' });
+    await signIn(credentials, { callbackUrl: '/home' })
   } catch (error) {
-    console.log('Sign-in failed:', error);
+    console.log('Sign-in failed:', error)
   }
+}
+
+const goToHome = () => {
+  router.push({ name: 'home' })
 }
 </script>
 
